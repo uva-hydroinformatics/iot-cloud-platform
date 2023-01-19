@@ -1,0 +1,14 @@
+# - Replace '????????' strings with values for your TTN application's name and respective key
+# - This TTN authorization key should allow querying the TTN storage integration for uplink sensor data
+# - Add TTN applications to this list as needed  
+
+# List of applications and keys to query data from TTN data storage integration
+ttn_query_list = [{'application':'????????', 'key':'????????'},
+                  {'application':'????????', 'key': '????????'},
+                  {'application':'????????', 'key': '????????'}]
+
+
+
+
+
+

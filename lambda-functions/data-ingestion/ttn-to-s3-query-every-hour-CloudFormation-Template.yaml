@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template for EventBridge rule 'ttn-to-s3-query-every-hour'
+Resources:
+  EventRule0:
+    Type: AWS::Events::Rule
+    Properties:
+      Description: Calls lambda function to query, parse and ingest TTN data to S3 bucket
+      EventBusName: default
+      Name: ttn-to-s3-query-every-hour
+      ScheduleExpression: rate(1 hour)
+      State: ENABLED
+      Targets:
+  
