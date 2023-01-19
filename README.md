@@ -1,2 +1,3 @@
 # cloud-iot-platform
-Cloud IoT Platform
+Cloud IoT Platform to store and visualize data from sensors connected to The Things Network (TTN).
+
