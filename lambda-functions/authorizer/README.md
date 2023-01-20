@@ -10,5 +10,5 @@ This lambda function is called for every gateway API request and checks if the a
 - Create and configure your API with the GET method
 - Create a lambda function with Python 3.9 runtime environment
 - Update the Key string, the user ID string and the GET method ARN in the lambda function
-
+- Upload python scripts from the deployment-package folder to your lambda function
 
