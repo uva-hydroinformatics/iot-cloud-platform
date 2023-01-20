@@ -9,7 +9,7 @@ This lambda function queries sensor uplink data from The Things Network storage 
 # Initial setup
 
 - Create an S3 bucket to store sensor data
-- Create a Lambda function with Python 3.9 runtime environment
+- Create a lambda function with Python 3.9 runtime environment
 - Add standard AWS lambda layer AWSSDKPandas-Python39
 - Setup the role for your lambda function with authorization to read/write to your target S3 bucket
 - Upload python scripts from the deployment-package folder to your lambda function
