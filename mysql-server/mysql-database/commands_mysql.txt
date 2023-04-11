@@ -1,0 +1,68 @@
+mysql -u root -p
+
+CREATE database FloodWarningDB;
+
+USE FloodWarningDB;
+
+CREATE TABLE `FloodWarningDB`.`Devices` (
+  `Device_ID` VARCHAR(16) NOT NULL,
+  `Type` VARCHAR(32) NOT NULL,
+  `Battery` FLOAT NOT NULL,
+  PRIMARY KEY (`Device_ID`));
+
+CREATE TABLE `FloodWarningDB`.`Locations` (
+  `Location_ID` VARCHAR(16) NOT NULL,
+  `Latitude` DECIMAL(19,16) NULL,
+  `Longitude` DECIMAL(19,16) NULL,
+  PRIMARY KEY (`Location_ID`));
+
+CREATE TABLE `FloodWarningDB`.`Variables` (
+  `Variable_ID` VARCHAR(50) NOT NULL,
+  `Description` VARCHAR(100),
+  PRIMARY KEY (`Variable_ID`));
+
+CREATE TABLE `FloodWarningDB`.`Values` (
+  `Value_ID` INT NOT NULL AUTO_INCREMENT,
+  `Received_at` DATETIME NOT NULL,
+  `value` FLOAT,
+  `Device_ID` VARCHAR(16) NOT NULL,
+  `Location_ID` VARCHAR(16) NOT NULL,
+  `Variable_ID` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`Value_ID`),
+  INDEX `Device_ID_idx` (`Device_ID` ASC),
+  INDEX `Location_ID_idx` (`Location_ID` ASC),
+  INDEX `Variable_ID_idx` (`Variable_ID` ASC),
+  CONSTRAINT `Device_ID`
+    FOREIGN KEY (`Device_ID`)
+    REFERENCES `FloodWarningDB`.`Devices` (`Device_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Location_ID`
+    FOREIGN KEY (`Location_ID`)
+    REFERENCES `FloodWarningDB`.`Locations` (`Location_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Variable_ID`
+    FOREIGN KEY (`Variable_ID`)
+    REFERENCES `FloodWarningDB`.`Variables` (`Variable_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+SHOW TABLES;
+
+DESCRIBE Devices;
+
+DESCRIBE Locations;
+
+DESCRIBE Values;
+
+DESCRIBE Variables;
+
+CREATE user '??????????'@'%' identified by '??????????'; 
+
+GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO '??????????'@'%';
+
+FLUSH PRIVILEGES;
+
+SELECT User from mysql.user;
+
