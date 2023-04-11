@@ -1,0 +1,105 @@
+---
+swagger: "2.0"
+info:
+  description: "This API allows for programmatic download of LoRa sensor data stored\
+    \ in the cloud infrastructure."
+  version: "2023-01-03T22:23:48Z"
+  title: "DataDownloadApi"
+host: "??????????.amazonaws.com"
+basePath: "/test"
+schemes:
+- "https"
+paths:
+  /download-sensor-data:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "application"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "authorizationToken"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "device_id"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "start_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "end_date"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "last"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+      security:
+      - DownloadAuthorizer: []
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:??????????"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws_proxy"
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,authorizationToken'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+        requestTemplates:
+          application/json: "{\"statusCode\": 200}"
+        passthroughBehavior: "when_no_match"
+        type: "mock"
+securityDefinitions:
+  DownloadAuthorizer:
+    type: "apiKey"
+    name: "authorizationToken"
+    in: "header"
+    x-amazon-apigateway-authtype: "custom"
+    x-amazon-apigateway-authorizer:
+      authorizerUri: "arn:aws:apigateway:??????????"
+      authorizerResultTtlInSeconds: 0
+      type: "token"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"

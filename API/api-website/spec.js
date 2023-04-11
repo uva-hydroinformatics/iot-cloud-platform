@@ -12,7 +12,7 @@ var spec =
   },
   "servers": [
     {
-      "url": "https://nh7610mswb.execute-api.us-east-1.amazonaws.com/test"
+      "url": "https://??????????/test"
     }
   ],
   "paths": {
