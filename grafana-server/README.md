@@ -9,4 +9,4 @@ After deploying the Grafana server, you can access the Grafana web interface by 
 
 # Example dashboard image
 
-<img src="./images/water_level.jpg">
+<img src="../images/water_level.jpg">
